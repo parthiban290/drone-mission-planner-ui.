@@ -1,0 +1,323 @@
+<html>
+<head>
+<title>index.html</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #d5b778;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bababa;}
+.s3 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#191a1c">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+index.html</font>
+</center></td></tr></table>
+<pre><span class="s0">&lt;!doctype </span><span class="s2">html</span><span class="s0">&gt;</span>
+<span class="s0">&lt;html </span><span class="s2">lang</span><span class="s3">=&quot;en&quot;</span><span class="s0">&gt;</span>
+<span class="s0">&lt;head&gt;</span>
+  <span class="s0">&lt;meta </span><span class="s2">charset</span><span class="s3">=&quot;UTF-8&quot;</span><span class="s0">&gt;</span>
+  <span class="s0">&lt;meta </span><span class="s2">name</span><span class="s3">=&quot;viewport&quot; </span><span class="s2">content</span><span class="s3">=&quot;width=device-width, initial-scale=1&quot;</span><span class="s0">&gt;</span>
+  <span class="s0">&lt;title&gt;</span><span class="s1">Document</span><span class="s0">&lt;/title&gt;</span>
+  <span class="s0">&lt;link </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot; </span><span class="s2">href</span><span class="s3">=&quot;./style.css&quot;</span><span class="s0">&gt;</span>
+  <span class="s0">&lt;link </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot; </span><span class="s2">href</span><span class="s3">=&quot;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css&quot;</span><span class="s0">&gt;</span>
+  <span class="s0">&lt;link </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot; </span><span class="s2">href</span><span class="s3">=&quot;https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css&quot;</span><span class="s0">&gt;</span>
+  <span class="s0">&lt;script </span><span class="s2">src</span><span class="s3">=&quot;https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js&quot;</span><span class="s0">&gt;&lt;/script&gt;</span>
+<span class="s0">&lt;/head&gt;</span>
+<span class="s0">&lt;body&gt;</span>
+<span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;continer&quot;</span><span class="s0">&gt;</span>
+  <span class="s0">&lt;header </span><span class="s2">class</span><span class="s3">=&quot;topnav&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;info&quot;</span><span class="s0">&gt;</span>
+      <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;logo&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;img </span><span class="s2">src</span><span class="s3">=&quot;./images/logo.png&quot; </span><span class="s2">alt</span><span class="s3">=&quot;AeroPlaner logo&quot;</span><span class="s0">&gt;</span>
+      <span class="s0">&lt;/div&gt;</span>
+      <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;heading&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;h2&gt;</span><span class="s1">AeroPlaner</span><span class="s0">&lt;/h2&gt;</span>
+        <span class="s0">&lt;p&gt;</span><span class="s1">Drone Mission Planner &amp; Ground Control Station</span><span class="s0">&lt;/p&gt;</span>
+      <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;info2&quot;</span><span class="s0">&gt;</span>
+      <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;profile&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-solid fa-circle-user&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+      <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+
+  <span class="s0">&lt;/header&gt;</span>
+
+  <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;content&quot;</span><span class="s0">&gt;</span>
+      <span class="s0">&lt;aside </span><span class="s2">class</span><span class="s3">=&quot;aside&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;nav </span><span class="s2">class</span><span class="s3">=&quot;sidebar-nav&quot;</span><span class="s0">&gt;</span>
+          <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;nav-item active&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;icon&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-solid fa-house&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;text&quot;</span><span class="s0">&gt;&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot;</span><span class="s0">&gt;</span><span class="s1">Home</span><span class="s0">&lt;/a&gt;&lt;/div&gt;</span>
+          <span class="s0">&lt;/div&gt;</span>
+
+          <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;nav-item&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;icon&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-solid fa-chart-line&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;text&quot;</span><span class="s0">&gt;&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot;</span><span class="s0">&gt;</span><span class="s1">Flight Data</span><span class="s0">&lt;/a&gt;&lt;/div&gt;</span>
+          <span class="s0">&lt;/div&gt;</span>
+
+          <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;nav-item&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;icon&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-solid fa-map&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;text&quot;</span><span class="s0">&gt;&lt;a </span><span class="s2">href</span><span class="s3">=&quot;pages/mission-planner.html&quot;</span><span class="s0">&gt;</span><span class="s1">Mission Planner</span><span class="s0">&lt;/a&gt;&lt;/div&gt;</span>
+          <span class="s0">&lt;/div&gt;</span>
+
+          <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;nav-item&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;icon&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-solid fa-screwdriver-wrench&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;text&quot;</span><span class="s0">&gt;&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot;</span><span class="s0">&gt;</span><span class="s1">Vehicle Setup</span><span class="s0">&lt;/a&gt;&lt;/div&gt;</span>
+          <span class="s0">&lt;/div&gt;</span>
+
+          <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;nav-item&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;icon&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-solid fa-sliders&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;text&quot;</span><span class="s0">&gt;&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot;</span><span class="s0">&gt;</span><span class="s1">Configuration</span><span class="s0">&lt;/a&gt;&lt;/div&gt;</span>
+          <span class="s0">&lt;/div&gt;</span>
+
+          <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;nav-item&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;icon&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-solid fa-location-dot&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;text&quot;</span><span class="s0">&gt;&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot;</span><span class="s0">&gt;</span><span class="s1">Geofence</span><span class="s0">&lt;/a&gt;&lt;/div&gt;</span>
+          <span class="s0">&lt;/div&gt;</span>
+
+          <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;nav-item&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;icon&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-solid fa-diamond&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;text&quot;</span><span class="s0">&gt;&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot;</span><span class="s0">&gt;</span><span class="s1">Simulation</span><span class="s0">&lt;/a&gt;&lt;/div&gt;</span>
+          <span class="s0">&lt;/div&gt;</span>
+
+          <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;nav-item&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;icon&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-regular fa-clipboard&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;text&quot;</span><span class="s0">&gt;&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot;</span><span class="s0">&gt;</span><span class="s1">Flight Logs</span><span class="s0">&lt;/a&gt;&lt;/div&gt;</span>
+          <span class="s0">&lt;/div&gt;</span>
+
+          <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;nav-item&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;icon&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-solid fa-network-wired&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;text&quot;</span><span class="s0">&gt;&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot;</span><span class="s0">&gt;</span><span class="s1">MAVLink Inspector</span><span class="s0">&lt;/a&gt;&lt;/div&gt;</span>
+          <span class="s0">&lt;/div&gt;</span>
+
+          <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;nav-item&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;icon&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-solid fa-microchip&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;text&quot;</span><span class="s0">&gt;&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot;</span><span class="s0">&gt;</span><span class="s1">Firmware</span><span class="s0">&lt;/a&gt;&lt;/div&gt;</span>
+          <span class="s0">&lt;/div&gt;</span>
+
+          <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;nav-item&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;icon&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-solid fa-screwdriver-wrench&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;text&quot;</span><span class="s0">&gt;&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot;</span><span class="s0">&gt;</span><span class="s1">Tools</span><span class="s0">&lt;/a&gt;&lt;/div&gt;</span>
+          <span class="s0">&lt;/div&gt;</span>
+
+          <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;nav-item&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;icon&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-solid fa-gear&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;text&quot;</span><span class="s0">&gt;&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot;</span><span class="s0">&gt;</span><span class="s1">Settings</span><span class="s0">&lt;/a&gt;&lt;/div&gt;</span>
+          <span class="s0">&lt;/div&gt;</span>
+
+          <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;nav-item&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;icon&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-regular fa-circle-question&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;text&quot;</span><span class="s0">&gt;&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot;</span><span class="s0">&gt;</span><span class="s1">Help</span><span class="s0">&lt;/a&gt;&lt;/div&gt;</span>
+          <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/nav&gt;</span>
+      <span class="s0">&lt;/aside&gt;</span>
+
+    <span class="s0">&lt;main </span><span class="s2">class</span><span class="s3">=&quot;main-content&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;features&quot;</span><span class="s0">&gt;</span>
+          <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;feature1&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;feature-heading&quot;</span><span class="s0">&gt;</span>
+              <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-solid fa-helicopter&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+              <span class="s0">&lt;span&gt;</span><span class="s1">Vehicle Status</span><span class="s0">&lt;/span&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;status&quot;</span><span class="s0">&gt;</span>
+              <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-solid fa-wifi&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+              <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;label&quot;</span><span class="s0">&gt;</span><span class="s1">Connection</span><span class="s0">&lt;/span&gt;</span>
+              <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;value&quot;</span><span class="s0">&gt;</span><span class="s1">--</span><span class="s0">&lt;/span&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;status&quot;</span><span class="s0">&gt;</span>
+              <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-solid fa-plane&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+              <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;label&quot;</span><span class="s0">&gt;</span><span class="s1">Vehicle Type</span><span class="s0">&lt;/span&gt;</span>
+              <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;value&quot;</span><span class="s0">&gt;</span><span class="s1">--</span><span class="s0">&lt;/span&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;status&quot;</span><span class="s0">&gt;</span>
+              <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-solid fa-route&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+              <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;label&quot;</span><span class="s0">&gt;</span><span class="s1">Flight Mode</span><span class="s0">&lt;/span&gt;</span>
+              <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;value&quot;</span><span class="s0">&gt;</span><span class="s1">--</span><span class="s0">&lt;/span&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;status&quot;</span><span class="s0">&gt;</span>
+              <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-solid fa-power-off&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+              <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;label&quot;</span><span class="s0">&gt;</span><span class="s1">Armed</span><span class="s0">&lt;/span&gt;</span>
+              <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;value disconnected&quot;</span><span class="s0">&gt;</span><span class="s1">--</span>
+        <span class="s0">&lt;/span&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;status&quot;</span><span class="s0">&gt;</span>
+              <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-solid fa-battery-half&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+              <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;label&quot;</span><span class="s0">&gt;</span><span class="s1">Battery</span><span class="s0">&lt;/span&gt;</span>
+              <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;value&quot;</span><span class="s0">&gt;</span><span class="s1">--</span><span class="s0">&lt;/span&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;status&quot;</span><span class="s0">&gt;</span>
+              <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-solid fa-location-dot&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+              <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;label&quot;</span><span class="s0">&gt;</span><span class="s1">GPS</span><span class="s0">&lt;/span&gt;</span>
+              <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;value&quot;</span><span class="s0">&gt;</span><span class="s1">--</span><span class="s0">&lt;/span&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;status&quot;</span><span class="s0">&gt;</span>
+              <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-solid fa-satellite&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+              <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;label&quot;</span><span class="s0">&gt;</span><span class="s1">Satellites</span><span class="s0">&lt;/span&gt;</span>
+              <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;value&quot;</span><span class="s0">&gt;</span><span class="s1">--</span><span class="s0">&lt;/span&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;status&quot;</span><span class="s0">&gt;</span>
+              <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-solid fa-mountain-sun&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+              <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;label&quot;</span><span class="s0">&gt;</span><span class="s1">Altitude (AMSL)</span><span class="s0">&lt;/span&gt;</span>
+              <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;value&quot;</span><span class="s0">&gt;</span><span class="s1">--</span><span class="s0">&lt;/span&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;status&quot;</span><span class="s0">&gt;</span>
+              <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-solid fa-gauge-high&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+              <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;label&quot;</span><span class="s0">&gt;</span><span class="s1">Ground Speed</span><span class="s0">&lt;/span&gt;</span>
+              <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;value&quot;</span><span class="s0">&gt;</span><span class="s1">--</span><span class="s0">&lt;/span&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;status&quot;</span><span class="s0">&gt;</span>
+              <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-solid fa-compass&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+              <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;label&quot;</span><span class="s0">&gt;</span><span class="s1">Heading</span><span class="s0">&lt;/span&gt;</span>
+              <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;value&quot;</span><span class="s0">&gt;</span><span class="s1">--</span><span class="s0">&lt;/span&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;status&quot;</span><span class="s0">&gt;</span>
+              <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-solid fa-fan&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+              <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;label&quot;</span><span class="s0">&gt;</span><span class="s1">Current</span><span class="s0">&lt;/span&gt;</span>
+              <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;value&quot;</span><span class="s0">&gt;</span><span class="s1">--</span><span class="s0">&lt;/span&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;status&quot;</span><span class="s0">&gt;</span>
+              <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-solid fa-bolt&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+              <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;label&quot;</span><span class="s0">&gt;</span><span class="s1">Voltage</span><span class="s0">&lt;/span&gt;</span>
+              <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;value&quot;</span><span class="s0">&gt;</span><span class="s1">--</span><span class="s0">&lt;/span&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+          <span class="s0">&lt;/div&gt;</span>
+
+          <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;feature2&quot;</span><span class="s0">&gt;</span>
+              <span class="s0">&lt;div </span><span class="s2">id</span><span class="s3">=&quot;map&quot;</span><span class="s0">&gt;&lt;/div&gt;</span>
+          <span class="s0">&lt;/div&gt;</span>
+
+          <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;feature3&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;feature-heading&quot;</span><span class="s0">&gt;</span><span class="s1">Attitude Indicator</span><span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;indicator1&quot;</span><span class="s0">&gt;</span>
+              <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;lattitude-indicator&quot;</span><span class="s0">&gt;</span>
+
+              <span class="s0">&lt;/div&gt;</span>
+
+              <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;altitude&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;altitude-cont&quot;</span><span class="s0">&gt;</span>
+                  <span class="s0">&lt;p&gt;</span><span class="s1">Altitude (m)</span><span class="s0">&lt;/p&gt;</span>
+                  <span class="s0">&lt;h1&gt;</span><span class="s1">0.0</span><span class="s0">&lt;/h1&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;altitude-cont&quot;</span><span class="s0">&gt;</span>
+                  <span class="s0">&lt;p&gt;</span><span class="s1">Ground Speed (m/s)</span><span class="s0">&lt;/p&gt;</span>
+                  <span class="s0">&lt;h1&gt;</span><span class="s1">0.0</span><span class="s0">&lt;/h1&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;altitude-cont&quot;</span><span class="s0">&gt;</span>
+                  <span class="s0">&lt;p&gt;</span><span class="s1">Heading (*)</span><span class="s0">&lt;/p&gt;</span>
+                  <span class="s0">&lt;h1&gt;</span><span class="s1">0</span><span class="s0">&lt;/h1&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;altitude-cont&quot;</span><span class="s0">&gt;</span>
+                  <span class="s0">&lt;p&gt;</span><span class="s1">Vertical Speed (m/s)</span><span class="s0">&lt;/p&gt;</span>
+                  <span class="s0">&lt;h1&gt;</span><span class="s1">0.0</span><span class="s0">&lt;/h1&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+              <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;indicator2&quot;</span><span class="s0">&gt;</span>
+              <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;battery&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;battery-head&quot;</span><span class="s0">&gt;</span><span class="s1">Battery Status</span><span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;battery-percen&quot;</span><span class="s0">&gt;</span>
+                  <span class="s0">&lt;span&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-solid fa-battery-full&quot;</span><span class="s0">&gt;&lt;/i&gt; </span><span class="s1">100%</span><span class="s0">&lt;/span&gt;&lt;span&gt;</span><span class="s1">--V</span><span class="s0">&lt;/span&gt;&lt;span&gt;</span><span class="s1">--A</span><span class="s0">&lt;/span&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+              <span class="s0">&lt;/div&gt;</span>
+              <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;gps&quot;</span><span class="s0">&gt;</span>
+                  <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;gps-heading&quot;</span><span class="s0">&gt;</span>
+                    <span class="s1">GPS Status</span>
+                  <span class="s0">&lt;/div&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;gps-cont&quot;</span><span class="s0">&gt;</span>
+                  <span class="s0">&lt;span&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-solid fa-location-crosshairs&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;/span&gt;&lt;span&gt;</span><span class="s1">Status:0</span><span class="s0">&lt;/span&gt;&lt;span&gt;</span><span class="s1">HDOP:--</span><span class="s0">&lt;/span&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+              <span class="s0">&lt;/div&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+          <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+
+      <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;footer&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;mission-recent&quot;</span><span class="s0">&gt;</span>
+          <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;feature-heading&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-regular fa-rectangle-list&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+            <span class="s0">&lt;span&gt;</span><span class="s1">Recent Missions</span><span class="s0">&lt;/span&gt;</span>
+            <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;view-all&quot;</span><span class="s0">&gt;</span><span class="s1">View All</span><span class="s0">&lt;/button&gt;</span>
+          <span class="s0">&lt;/div&gt;</span>
+
+          <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;mission-table&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;mission-row mission-head&quot;</span><span class="s0">&gt;</span>
+              <span class="s0">&lt;span&gt;</span><span class="s1">Name</span><span class="s0">&lt;/span&gt;&lt;span&gt;</span><span class="s1">Date Modified</span><span class="s0">&lt;/span&gt;&lt;span&gt;</span><span class="s1">Waypoints</span><span class="s0">&lt;/span&gt;&lt;span&gt;</span><span class="s1">Distance</span><span class="s0">&lt;/span&gt;&lt;span&gt;</span><span class="s1">Actions</span><span class="s0">&lt;/span&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;mission-row&quot;</span><span class="s0">&gt;</span>
+              <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;m-name&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-regular fa-folder&quot;</span><span class="s0">&gt;&lt;/i&gt;</span><span class="s1">Survey_Mission</span><span class="s0">&lt;/span&gt;</span>
+              <span class="s0">&lt;span&gt;</span><span class="s1">2024-08-20 14:32</span><span class="s0">&lt;/span&gt;&lt;span&gt;</span><span class="s1">12</span><span class="s0">&lt;/span&gt;&lt;span&gt;</span><span class="s1">2.4 km</span><span class="s0">&lt;/span&gt;</span>
+              <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;actions&quot;</span><span class="s0">&gt;</span>
+          <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-regular fa-play&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+          <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-regular fa-pen-to-square&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+          <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-regular fa-trash-can delete&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+        <span class="s0">&lt;/span&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;mission-row&quot;</span><span class="s0">&gt;</span>
+              <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;m-name&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-regular fa-folder&quot;</span><span class="s0">&gt;&lt;/i&gt;</span><span class="s1">Inspection_Route</span><span class="s0">&lt;/span&gt;</span>
+              <span class="s0">&lt;span&gt;</span><span class="s1">2024-08-18 09:15</span><span class="s0">&lt;/span&gt;&lt;span&gt;</span><span class="s1">8</span><span class="s0">&lt;/span&gt;&lt;span&gt;</span><span class="s1">1.6 km</span><span class="s0">&lt;/span&gt;</span>
+              <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;actions&quot;</span><span class="s0">&gt;</span>
+          <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-regular fa-play&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+          <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-regular fa-pen-to-square&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+          <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-regular fa-trash-can delete&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+        <span class="s0">&lt;/span&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;mission-row&quot;</span><span class="s0">&gt;</span>
+              <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;m-name&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-regular fa-folder&quot;</span><span class="s0">&gt;&lt;/i&gt;</span><span class="s1">Test_Flight</span><span class="s0">&lt;/span&gt;</span>
+              <span class="s0">&lt;span&gt;</span><span class="s1">2024-08-15 11:20</span><span class="s0">&lt;/span&gt;&lt;span&gt;</span><span class="s1">5</span><span class="s0">&lt;/span&gt;&lt;span&gt;</span><span class="s1">0.8 km</span><span class="s0">&lt;/span&gt;</span>
+              <span class="s0">&lt;span </span><span class="s2">class</span><span class="s3">=&quot;actions&quot;</span><span class="s0">&gt;</span>
+          <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-regular fa-play&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+          <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-regular fa-pen-to-square&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+          <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-regular fa-trash-can delete&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+        <span class="s0">&lt;/span&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+          <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;quick-tool&quot;</span><span class="s0">&gt;</span>
+          <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;feature-heading&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-solid fa-wrench&quot;</span><span class="s0">&gt;&lt;/i&gt;</span>
+            <span class="s0">&lt;span&gt;</span><span class="s1">Quick Tools</span><span class="s0">&lt;/span&gt;</span>
+          <span class="s0">&lt;/div&gt;</span>
+
+          <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;tool-grid&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;tool-btn&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-solid fa-file-import&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;span&gt;</span><span class="s1">Load Mission</span><span class="s0">&lt;/span&gt;&lt;/button&gt;</span>
+            <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;tool-btn&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-regular fa-file-lines&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;span&gt;</span><span class="s1">Save Mission</span><span class="s0">&lt;/span&gt;&lt;/button&gt;</span>
+            <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;tool-btn&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-solid fa-sliders&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;span&gt;</span><span class="s1">Parameter List</span><span class="s0">&lt;/span&gt;&lt;/button&gt;</span>
+            <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;tool-btn&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-solid fa-gear&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;span&gt;</span><span class="s1">Calibration</span><span class="s0">&lt;/span&gt;&lt;/button&gt;</span>
+            <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;tool-btn&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-solid fa-upload&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;span&gt;</span><span class="s1">Firmware Update</span><span class="s0">&lt;/span&gt;&lt;/button&gt;</span>
+            <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;tool-btn&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-solid fa-download&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;span&gt;</span><span class="s1">Log Download</span><span class="s0">&lt;/span&gt;&lt;/button&gt;</span>
+            <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;tool-btn&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-solid fa-location-dot&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;span&gt;</span><span class="s1">Geofence</span><span class="s0">&lt;/span&gt;&lt;/button&gt;</span>
+            <span class="s0">&lt;button </span><span class="s2">class</span><span class="s3">=&quot;tool-btn&quot;</span><span class="s0">&gt;&lt;i </span><span class="s2">class</span><span class="s3">=&quot;fa-solid fa-terminal&quot;</span><span class="s0">&gt;&lt;/i&gt;&lt;span&gt;</span><span class="s1">MAVLink Console</span><span class="s0">&lt;/span&gt;&lt;/button&gt;</span>
+          <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+      <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/main&gt;</span>
+  <span class="s0">&lt;/div&gt;</span>
+<span class="s0">&lt;/div&gt;</span>
+
+<span class="s0">&lt;script </span><span class="s2">src</span><span class="s3">=&quot;./map.js&quot;</span><span class="s0">&gt;&lt;/script&gt;</span>
+<span class="s0">&lt;/body&gt;</span>
+<span class="s0">&lt;/html&gt;</span>
+</pre>
+</body>
+</html>

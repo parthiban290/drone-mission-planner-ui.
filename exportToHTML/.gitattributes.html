@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>.gitattributes</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #bcbec4;}
+.s1 { color: #7a7e85;}
+.s2 { color: #bcbec4;}
+.s3 { color: #cf8e6d;}
+</style>
+</head>
+<body bgcolor="#191a1c">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+.gitattributes</font>
+</center></td></tr></table>
+<pre><span class="s0"># </span><span class="s1">Automatically normalize line endings for all text-based files 
+</span><span class="s0"># </span><span class="s1">https://git-scm.com/docs/gitattributes#_end_of_line_conversion 
+</span>
+<span class="s2">* </span><span class="s3">text</span><span class="s0">=</span><span class="s2">auto 
+</span>
+<span class="s0"># </span><span class="s1">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+</span>
+<span class="s0"># </span><span class="s1">For the following file types, normalize line endings to LF on 
+</span><span class="s0"># </span><span class="s1">checkin and prevent conversion to CRLF when they are checked out 
+</span><span class="s0"># </span><span class="s1">(this is required in order to prevent newline related issues like, 
+</span><span class="s0"># </span><span class="s1">for example, after the build script is run) 
+</span>
+<span class="s2">.*      text </span><span class="s3">eol</span><span class="s0">=</span><span class="s2">lf 
+*.css   text </span><span class="s3">eol</span><span class="s0">=</span><span class="s2">lf 
+*.html  text </span><span class="s3">eol</span><span class="s0">=</span><span class="s2">lf 
+*.js    text </span><span class="s3">eol</span><span class="s0">=</span><span class="s2">lf 
+*.json  text </span><span class="s3">eol</span><span class="s0">=</span><span class="s2">lf 
+*.md    text </span><span class="s3">eol</span><span class="s0">=</span><span class="s2">lf 
+*.sh    text </span><span class="s3">eol</span><span class="s0">=</span><span class="s2">lf 
+*.txt   text </span><span class="s3">eol</span><span class="s0">=</span><span class="s2">lf 
+*.xml   text </span><span class="s3">eol</span><span class="s0">=</span><span class="s2">lf 
+</span></pre>
+</body>
+</html>

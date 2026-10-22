@@ -1,0 +1,164 @@
+<html>
+<head>
+<title>gulpfile.mjs</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #6aab73;}
+.s3 { color: #bcbec4;}
+.s4 { color: #7a7e85;}
+</style>
+</head>
+<body bgcolor="#191a1c">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+gulpfile.mjs</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">fs from </span><span class="s2">'fs'</span><span class="s3">;</span>
+<span class="s0">import </span><span class="s1">path from </span><span class="s2">'path'</span><span class="s3">;</span>
+<span class="s0">import </span><span class="s1">gulp from </span><span class="s2">'gulp'</span><span class="s3">;</span>
+<span class="s0">import </span><span class="s1">gulpAutoPrefixer from </span><span class="s2">'gulp-autoprefixer'</span><span class="s3">;</span>
+<span class="s0">import </span><span class="s1">gulpEslint from </span><span class="s2">'gulp-eslint'</span><span class="s3">;</span>
+<span class="s0">import </span><span class="s1">gulpHeader from </span><span class="s2">'gulp-header'</span><span class="s3">;</span>
+<span class="s0">import </span><span class="s1">gulpRename from </span><span class="s2">'gulp-rename'</span><span class="s3">;</span>
+<span class="s0">import </span><span class="s1">archiver from </span><span class="s2">'archiver'</span><span class="s3">;</span>
+<span class="s0">import </span><span class="s3">{ </span><span class="s1">globSync </span><span class="s3">} </span><span class="s1">from </span><span class="s2">'glob'</span><span class="s3">;</span>
+<span class="s0">import </span><span class="s3">{ </span><span class="s1">deleteSync </span><span class="s3">} </span><span class="s1">from </span><span class="s2">'del'</span><span class="s3">;</span>
+<span class="s0">import </span><span class="s3">{ </span><span class="s1">createRequire </span><span class="s3">} </span><span class="s1">from </span><span class="s2">'module'</span><span class="s3">;</span>
+<span class="s0">const </span><span class="s1">require </span><span class="s3">= </span><span class="s1">createRequire</span><span class="s3">(</span><span class="s0">import</span><span class="s3">.</span><span class="s1">meta</span><span class="s3">.</span><span class="s1">url</span><span class="s3">);</span>
+<span class="s0">const </span><span class="s1">pkg </span><span class="s3">= </span><span class="s1">require</span><span class="s3">(</span><span class="s2">'./package.json'</span><span class="s3">);</span>
+
+<span class="s0">const </span><span class="s1">dirs </span><span class="s3">= </span><span class="s1">pkg</span><span class="s3">[</span><span class="s2">'h5bp-configs'</span><span class="s3">].</span><span class="s1">directories</span><span class="s3">;</span>
+
+<span class="s4">// ---------------------------------------------------------------------</span>
+<span class="s4">// | Helper tasks                                                      |</span>
+<span class="s4">// ---------------------------------------------------------------------</span>
+
+<span class="s1">gulp</span><span class="s3">.</span><span class="s1">task</span><span class="s3">(</span><span class="s2">'archive:create_archive_dir'</span><span class="s3">, (</span><span class="s1">done</span><span class="s3">) =&gt; {</span>
+  <span class="s1">fs</span><span class="s3">.</span><span class="s1">mkdirSync</span><span class="s3">(</span><span class="s1">path</span><span class="s3">.</span><span class="s1">resolve</span><span class="s3">(</span><span class="s1">dirs</span><span class="s3">.</span><span class="s1">archive</span><span class="s3">), </span><span class="s2">'0755'</span><span class="s3">);</span>
+  <span class="s1">done</span><span class="s3">();</span>
+<span class="s3">});</span>
+
+<span class="s1">gulp</span><span class="s3">.</span><span class="s1">task</span><span class="s3">(</span><span class="s2">'archive:zip'</span><span class="s3">, (</span><span class="s1">done</span><span class="s3">) =&gt; {</span>
+  <span class="s0">const </span><span class="s1">archiveName </span><span class="s3">= </span><span class="s1">path</span><span class="s3">.</span><span class="s1">resolve</span><span class="s3">(</span>
+    <span class="s1">dirs</span><span class="s3">.</span><span class="s1">archive</span><span class="s3">,</span>
+    <span class="s2">`</span><span class="s1">$</span><span class="s3">{</span><span class="s1">pkg</span><span class="s3">.</span><span class="s1">name</span><span class="s3">}</span><span class="s2">_v</span><span class="s1">$</span><span class="s3">{</span><span class="s1">pkg</span><span class="s3">.</span><span class="s1">version</span><span class="s3">}</span><span class="s2">.zip`</span><span class="s3">,</span>
+  <span class="s3">);</span>
+  <span class="s0">const </span><span class="s1">zip </span><span class="s3">= </span><span class="s1">archiver</span><span class="s3">(</span><span class="s2">'zip'</span><span class="s3">);</span>
+  <span class="s0">const </span><span class="s1">files </span><span class="s3">= </span><span class="s1">globSync</span><span class="s3">(</span><span class="s2">'**/*.*'</span><span class="s3">, {</span>
+    <span class="s1">cwd</span><span class="s3">: </span><span class="s1">dirs</span><span class="s3">.</span><span class="s1">dist</span><span class="s3">,</span>
+    <span class="s1">ignore</span><span class="s3">: [</span>
+      <span class="s2">'**/node_modules/**'</span><span class="s3">,</span>
+      <span class="s2">'package-lock.json'</span><span class="s3">,</span>
+      <span class="s2">'**/dist/**'</span><span class="s3">,</span>
+      <span class="s2">'**/.cache/**'</span><span class="s3">,</span>
+    <span class="s3">],</span>
+    <span class="s1">dot</span><span class="s3">: </span><span class="s0">true</span><span class="s3">, </span><span class="s4">// include hidden files</span>
+  <span class="s3">});</span>
+  <span class="s0">const </span><span class="s1">output </span><span class="s3">= </span><span class="s1">fs</span><span class="s3">.</span><span class="s1">createWriteStream</span><span class="s3">(</span><span class="s1">archiveName</span><span class="s3">);</span>
+
+  <span class="s1">zip</span><span class="s3">.</span><span class="s1">on</span><span class="s3">(</span><span class="s2">'error'</span><span class="s3">, (</span><span class="s1">error</span><span class="s3">) =&gt; {</span>
+    <span class="s1">done</span><span class="s3">();</span>
+    <span class="s0">throw </span><span class="s1">error</span><span class="s3">;</span>
+  <span class="s3">});</span>
+
+  <span class="s1">output</span><span class="s3">.</span><span class="s1">on</span><span class="s3">(</span><span class="s2">'close'</span><span class="s3">, </span><span class="s1">done</span><span class="s3">);</span>
+
+  <span class="s1">files</span><span class="s3">.</span><span class="s1">forEach</span><span class="s3">((</span><span class="s1">file</span><span class="s3">) =&gt; {</span>
+    <span class="s0">const </span><span class="s1">filePath </span><span class="s3">= </span><span class="s1">path</span><span class="s3">.</span><span class="s1">resolve</span><span class="s3">(</span><span class="s1">dirs</span><span class="s3">.</span><span class="s1">dist</span><span class="s3">, </span><span class="s1">file</span><span class="s3">);</span>
+
+    <span class="s4">// `zip.bulk` does not maintain the file</span>
+    <span class="s4">// permissions, so we need to add files individually</span>
+    <span class="s1">zip</span><span class="s3">.</span><span class="s1">append</span><span class="s3">(</span><span class="s1">fs</span><span class="s3">.</span><span class="s1">createReadStream</span><span class="s3">(</span><span class="s1">filePath</span><span class="s3">), {</span>
+      <span class="s1">name</span><span class="s3">: </span><span class="s1">file</span><span class="s3">,</span>
+      <span class="s1">mode</span><span class="s3">: </span><span class="s1">fs</span><span class="s3">.</span><span class="s1">statSync</span><span class="s3">(</span><span class="s1">filePath</span><span class="s3">).</span><span class="s1">mode</span><span class="s3">,</span>
+    <span class="s3">});</span>
+  <span class="s3">});</span>
+
+  <span class="s1">zip</span><span class="s3">.</span><span class="s1">pipe</span><span class="s3">(</span><span class="s1">output</span><span class="s3">);</span>
+  <span class="s1">zip</span><span class="s3">.</span><span class="s1">finalize</span><span class="s3">();</span>
+  <span class="s1">done</span><span class="s3">();</span>
+<span class="s3">});</span>
+
+<span class="s1">gulp</span><span class="s3">.</span><span class="s1">task</span><span class="s3">(</span><span class="s2">'clean'</span><span class="s3">, (</span><span class="s1">done</span><span class="s3">) =&gt; {</span>
+  <span class="s1">deleteSync</span><span class="s3">([</span><span class="s1">dirs</span><span class="s3">.</span><span class="s1">archive</span><span class="s3">, </span><span class="s1">dirs</span><span class="s3">.</span><span class="s1">dist</span><span class="s3">]);</span>
+  <span class="s1">done</span><span class="s3">();</span>
+<span class="s3">});</span>
+
+<span class="s1">gulp</span><span class="s3">.</span><span class="s1">task</span><span class="s3">(</span><span class="s2">'copy:index.html'</span><span class="s3">, () =&gt; {</span>
+  <span class="s0">return </span><span class="s1">gulp</span><span class="s3">.</span><span class="s1">src</span><span class="s3">(</span><span class="s2">`</span><span class="s1">$</span><span class="s3">{</span><span class="s1">dirs</span><span class="s3">.</span><span class="s1">src</span><span class="s3">}</span><span class="s2">/index.html`</span><span class="s3">).</span><span class="s1">pipe</span><span class="s3">(</span><span class="s1">gulp</span><span class="s3">.</span><span class="s1">dest</span><span class="s3">(</span><span class="s1">dirs</span><span class="s3">.</span><span class="s1">dist</span><span class="s3">));</span>
+<span class="s3">});</span>
+
+<span class="s1">gulp</span><span class="s3">.</span><span class="s1">task</span><span class="s3">(</span><span class="s2">'copy:license'</span><span class="s3">, () =&gt;</span>
+  <span class="s1">gulp</span><span class="s3">.</span><span class="s1">src</span><span class="s3">(</span><span class="s2">'LICENSE.txt'</span><span class="s3">).</span><span class="s1">pipe</span><span class="s3">(</span><span class="s1">gulp</span><span class="s3">.</span><span class="s1">dest</span><span class="s3">(</span><span class="s1">dirs</span><span class="s3">.</span><span class="s1">dist</span><span class="s3">)),</span>
+<span class="s3">);</span>
+
+<span class="s1">gulp</span><span class="s3">.</span><span class="s1">task</span><span class="s3">(</span><span class="s2">'copy:style'</span><span class="s3">, () =&gt; {</span>
+  <span class="s0">const </span><span class="s1">banner </span><span class="s3">= </span><span class="s2">`/*! HTML5 Boilerplate v</span><span class="s1">$</span><span class="s3">{</span><span class="s1">pkg</span><span class="s3">.</span><span class="s1">version</span><span class="s3">} </span><span class="s2">| </span><span class="s1">$</span><span class="s3">{</span><span class="s1">pkg</span><span class="s3">.</span><span class="s1">license</span><span class="s3">} </span><span class="s2">License | </span><span class="s1">$</span><span class="s3">{</span><span class="s1">pkg</span><span class="s3">.</span><span class="s1">homepage</span><span class="s3">} </span><span class="s2">*/</span><span class="s0">\n\n</span><span class="s2">`</span><span class="s3">;</span>
+
+  <span class="s0">return </span><span class="s1">gulp</span>
+    <span class="s3">.</span><span class="s1">src</span><span class="s3">(</span><span class="s2">'node_modules/main.css/dist/main.css'</span><span class="s3">)</span>
+    <span class="s3">.</span><span class="s1">pipe</span><span class="s3">(</span><span class="s1">gulpHeader</span><span class="s3">(</span><span class="s1">banner</span><span class="s3">))</span>
+    <span class="s3">.</span><span class="s1">pipe</span><span class="s3">(</span>
+      <span class="s1">gulpAutoPrefixer</span><span class="s3">({</span>
+        <span class="s1">cascade</span><span class="s3">: </span><span class="s0">false</span><span class="s3">,</span>
+      <span class="s3">}),</span>
+    <span class="s3">)</span>
+    <span class="s3">.</span><span class="s1">pipe</span><span class="s3">(</span>
+      <span class="s1">gulpRename</span><span class="s3">({</span>
+        <span class="s1">basename</span><span class="s3">: </span><span class="s2">'style'</span><span class="s3">,</span>
+      <span class="s3">}),</span>
+    <span class="s3">)</span>
+    <span class="s3">.</span><span class="s1">pipe</span><span class="s3">(</span><span class="s1">gulp</span><span class="s3">.</span><span class="s1">dest</span><span class="s3">(</span><span class="s2">`</span><span class="s1">$</span><span class="s3">{</span><span class="s1">dirs</span><span class="s3">.</span><span class="s1">dist</span><span class="s3">}</span><span class="s2">/css`</span><span class="s3">));</span>
+<span class="s3">});</span>
+
+<span class="s1">gulp</span><span class="s3">.</span><span class="s1">task</span><span class="s3">(</span><span class="s2">'copy:misc'</span><span class="s3">, () =&gt;</span>
+  <span class="s1">gulp</span>
+    <span class="s3">.</span><span class="s1">src</span><span class="s3">(</span>
+      <span class="s3">[</span>
+        <span class="s4">// Copy all files</span>
+        <span class="s2">`</span><span class="s1">$</span><span class="s3">{</span><span class="s1">dirs</span><span class="s3">.</span><span class="s1">src</span><span class="s3">}</span><span class="s2">/**/*`</span><span class="s3">,</span>
+
+        <span class="s4">// Exclude the following files</span>
+        <span class="s4">// (other tasks will handle the copying of these files)</span>
+        <span class="s2">`!</span><span class="s1">$</span><span class="s3">{</span><span class="s1">dirs</span><span class="s3">.</span><span class="s1">src</span><span class="s3">}</span><span class="s2">/css/main.css`</span><span class="s3">,</span>
+        <span class="s2">`!</span><span class="s1">$</span><span class="s3">{</span><span class="s1">dirs</span><span class="s3">.</span><span class="s1">src</span><span class="s3">}</span><span class="s2">/index.html`</span><span class="s3">,</span>
+        <span class="s2">`!**/.DS_Store`</span>
+      <span class="s3">],</span>
+      <span class="s3">{</span>
+        <span class="s1">encoding</span><span class="s3">: </span><span class="s0">false</span><span class="s3">,</span>
+        <span class="s4">// Include hidden files by default</span>
+        <span class="s1">dot</span><span class="s3">: </span><span class="s0">true</span><span class="s3">,</span>
+      <span class="s3">},</span>
+    <span class="s3">)</span>
+    <span class="s3">.</span><span class="s1">pipe</span><span class="s3">(</span><span class="s1">gulp</span><span class="s3">.</span><span class="s1">dest</span><span class="s3">(</span><span class="s1">dirs</span><span class="s3">.</span><span class="s1">dist</span><span class="s3">)),</span>
+<span class="s3">);</span>
+
+<span class="s1">gulp</span><span class="s3">.</span><span class="s1">task</span><span class="s3">(</span><span class="s2">'lint:js'</span><span class="s3">, () =&gt;</span>
+  <span class="s1">gulp</span>
+    <span class="s3">.</span><span class="s1">src</span><span class="s3">([</span><span class="s2">`</span><span class="s1">$</span><span class="s3">{</span><span class="s1">dirs</span><span class="s3">.</span><span class="s1">src</span><span class="s3">}</span><span class="s2">/js/*.js`</span><span class="s3">, </span><span class="s2">`</span><span class="s1">$</span><span class="s3">{</span><span class="s1">dirs</span><span class="s3">.</span><span class="s1">src</span><span class="s3">}</span><span class="s2">/*.js`</span><span class="s3">, </span><span class="s2">`</span><span class="s1">$</span><span class="s3">{</span><span class="s1">dirs</span><span class="s3">.</span><span class="s1">test</span><span class="s3">}</span><span class="s2">/*.mjs`</span><span class="s3">])</span>
+    <span class="s3">.</span><span class="s1">pipe</span><span class="s3">(</span><span class="s1">gulpEslint</span><span class="s3">())</span>
+    <span class="s3">.</span><span class="s1">pipe</span><span class="s3">(</span><span class="s1">gulpEslint</span><span class="s3">.</span><span class="s1">failOnError</span><span class="s3">()),</span>
+<span class="s3">);</span>
+
+<span class="s4">// ---------------------------------------------------------------------</span>
+<span class="s4">// | Main tasks                                                        |</span>
+<span class="s4">// ---------------------------------------------------------------------</span>
+<span class="s1">gulp</span><span class="s3">.</span><span class="s1">task</span><span class="s3">(</span>
+  <span class="s2">'copy'</span><span class="s3">,</span>
+  <span class="s1">gulp</span><span class="s3">.</span><span class="s1">series</span><span class="s3">(</span><span class="s2">'copy:index.html'</span><span class="s3">, </span><span class="s2">'copy:license'</span><span class="s3">, </span><span class="s2">'copy:style'</span><span class="s3">, </span><span class="s2">'copy:misc'</span><span class="s3">),</span>
+<span class="s3">);</span>
+
+<span class="s1">gulp</span><span class="s3">.</span><span class="s1">task</span><span class="s3">(</span><span class="s2">'build'</span><span class="s3">, </span><span class="s1">gulp</span><span class="s3">.</span><span class="s1">series</span><span class="s3">(</span><span class="s1">gulp</span><span class="s3">.</span><span class="s1">parallel</span><span class="s3">(</span><span class="s2">'clean'</span><span class="s3">, </span><span class="s2">'lint:js'</span><span class="s3">), </span><span class="s2">'copy'</span><span class="s3">));</span>
+
+<span class="s1">gulp</span><span class="s3">.</span><span class="s1">task</span><span class="s3">(</span>
+  <span class="s2">'archive'</span><span class="s3">,</span>
+  <span class="s1">gulp</span><span class="s3">.</span><span class="s1">series</span><span class="s3">(</span><span class="s2">'build'</span><span class="s3">, </span><span class="s2">'archive:create_archive_dir'</span><span class="s3">, </span><span class="s2">'archive:zip'</span><span class="s3">),</span>
+<span class="s3">);</span>
+
+<span class="s1">gulp</span><span class="s3">.</span><span class="s1">task</span><span class="s3">(</span><span class="s2">'default'</span><span class="s3">, </span><span class="s1">gulp</span><span class="s3">.</span><span class="s1">series</span><span class="s3">(</span><span class="s2">'build'</span><span class="s3">));</span>
+</pre>
+</body>
+</html>

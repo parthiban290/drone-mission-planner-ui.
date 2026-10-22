@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AeroPlaner - Mission Planner</title>
+  <link rel="stylesheet" href="../css/mission-planner.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="continer">
+  <!-- Top Navigation -->
+  <header class="topnav">
+    <div class="info">
+      <div class="logo">
+        <img src="./images/logo.png" alt="AeroPlaner logo">
+      </div>
+      <div class="heading">
+        <h2>AeroPlaner</h2>
+        <p>Drone Mission Planner & Ground Control Station</p>
+      </div>
+    </div>
+
+    <div class="info2">
+      <i class="fa-regular fa-bell top-icon"></i>
+      <i class="fa-solid fa-gear top-icon"></i>
+      <div class="profile">
+        <i class="fa-solid fa-circle-user"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- Secondary Toolbar -->
+  <div class="secondary-toolbar">
+    <button class="btn btn-dark"><i class="fa-solid fa-location-dot"></i> Add Waypoint</button>
+    <button class="btn btn-dark"><i class="fa-solid fa-arrow-right-to-bracket"></i> Insert Waypoint</button>
+    <button class="btn btn-dark"><i class="fa-regular fa-trash-can"></i> Delete Waypoint</button>
+    <button class="btn btn-dark"><i class="fa-regular fa-trash-can"></i> Clear All</button>
+
+    <div class="divider"></div>
+
+    <button class="btn btn-dark"><i class="fa-solid fa-rotate-left"></i> Undo</button>
+    <button class="btn btn-dark"><i class="fa-solid fa-rotate-right"></i> Redo</button>
+
+    <div class="divider"></div>
+
+    <button class="btn btn-dark"><i class="fa-regular fa-floppy-disk"></i> Save Mission</button>
+    <button class="btn btn-dark"><i class="fa-regular fa-folder-open"></i> Load Mission</button>
+
+    <div class="divider"></div>
+
+    <button class="btn btn-dark"><i class="fa-solid fa-upload"></i> Import (KML)</button>
+    <button class="btn btn-dark"><i class="fa-solid fa-download"></i> Export (JSON)</button>
+  </div>
+
+  <!-- Main Content Area -->
+  <div class="content">
+
+    <!-- Left Sidebar (Main Nav) -->
+    <aside class="main-sidebar">
+      <nav class="sidebar-nav">
+        <div class="nav-item">
+          <i class="fa-solid fa-house icon"></i> <span>Home</span>
+        </div>
+        <div class="nav-item">
+          <i class="fa-solid fa-map icon"></i> <span>Mission Planner</span>
+        </div>
+        <div class="nav-item">
+          <i class="fa-solid fa-plug icon"></i> <span>Connect Vehicle</span>
+        </div>
+        <div class="nav-item">
+          <i class="fa-solid fa-screwdriver-wrench icon"></i> <span>Vehicle Setup</span>
+        </div>
+        <div class="nav-item">
+          <i class="fa-solid fa-play icon"></i> <span>Start Simulation</span>
+        </div>
+        <div class="nav-item">
+          <i class="fa-regular fa-file-lines icon"></i> <span>View Logs</span>
+        </div>
+      </nav>
+
+      <!-- Mission Stats summary -->
+      <div class="mission-summary">
+        <div class="stat-row"><span class="stat-label"><i class="fa-solid fa-location-dot"></i> Total Waypoints</span> <span class="stat-val">5</span></div>
+        <div class="stat-row"><span class="stat-label"><i class="fa-solid fa-route"></i> Total Distance</span> <span class="stat-val">3.42 km</span></div>
+        <div class="stat-row"><span class="stat-label"><i class="fa-regular fa-clock"></i> Estimated Flight Time</span> <span class="stat-val">6 min 48 sec</span></div>
+        <div class="stat-row"><span class="stat-label"><i class="fa-solid fa-mountain"></i> Max Altitude</span> <span class="stat-val">30 m</span></div>
+        <div class="stat-row"><span class="stat-label"><i class="fa-solid fa-crosshairs"></i> Mission Type</span> <span class="stat-val">Survey</span></div>
+      </div>
+
+    </aside>
+
+    <div class="workspace">
+      <div class="workspace-row">
+
+        <!-- Mission Items Panel -->
+        <div class="mission-items-panel">
+          <div class="panel-header">
+            <h3>Mission Items</h3>
+            <button class="icon-btn"><i class="fa-solid fa-plus"></i></button>
+          </div>
+
+          <div class="items-list">
+
+
+
+
+
+
+
+
+
+
+          </div>
+
+        </div>
+
+        <!-- Center View (Map Only) -->
+        <div class="center-view">
+          <!-- Map Container -->
+          <div class="map-container">
+            <!-- Map overlays matching the image -->
+            <div class="map-overlay-top">
+
+              <div class="map-search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input
+                  type="text"
+                  id="locationSearch"
+                  placeholder="Search city, address or place..."
+                  autocomplete="off"
+                >
+                <button type="button" id="clearSearch" title="Clear search">
+                  &times;
+                </button>
+                <div id="searchResults" class="search-results"></div>
+              </div>
+
+            </div>
+
+            <div class="map-overlay-bottom">
+<!--              <div class="scale-bar">500 m</div>-->
+              <div class="coord-info">Lat: 13.0854 &nbsp; Lon: 80.2721 &nbsp; | &nbsp; Zoom: 16</div>
+            </div>
+
+            <!-- Leave empty for Leaflet/Google Maps injection -->
+            <div id="map">
+
+
+            </div>
+          </div>
+        </div> <!-- closes center-view -->
+
+        <!-- Right Side Panel (Properties & Settings) -->
+        <div class="right-panel">
+          <!-- Waypoint Properties -->
+          <div class="panel-section">
+            <div class="panel-header">
+              <h3>Waypoint Properties</h3>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="panel-body">
+              <div class="form-group">
+                <label>Selected Waypoint</label>
+                <div class="custom-select">
+                  <i class="fa-solid fa-location-dot blue"></i>
+                  <select>
+                    <option>Waypoint 3</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group half">
+                  <label>Latitude</label>
+                  <input type="text" value="13.086145">
+                </div>
+                <div class="form-group half">
+                  <label>Longitude</label>
+                  <input type="text" value="80.273832">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group half">
+                  <label>Altitude (m)</label>
+                  <div class="number-input">
+                    <input type="number" value="30">
+                    <div class="spinners"><i class="fa-solid fa-chevron-up"></i><i class="fa-solid fa-chevron-down"></i></div>
+                  </div>
+                </div>
+                <div class="form-group half">
+                  <label>Flight Speed (m/s)</label>
+                  <div class="number-input">
+                    <input type="number" value="5">
+                    <div class="spinners"><i class="fa-solid fa-chevron-up"></i><i class="fa-solid fa-chevron-down"></i></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group half">
+                  <label>Command</label>
+                  <select class="basic-select">
+                    <option>WAYPOINT</option>
+                  </select>
+                </div>
+                <div class="form-group half">
+                  <label>Hold Time (sec)</label>
+                  <div class="number-input">
+                    <input type="number" value="0">
+                    <div class="spinners"><i class="fa-solid fa-chevron-up"></i><i class="fa-solid fa-chevron-down"></i></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row mt-2">
+                <button class="btn btn-primary btn-block"><i class="fa-solid fa-check"></i> Update Waypoint</button>
+                <button class="btn btn-danger-outline btn-block"><i class="fa-regular fa-trash-can"></i> Delete Waypoint</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mission Settings -->
+          <div class="panel-section">
+            <div class="panel-header">
+              <h3>Mission Settings</h3>
+              <i class="fa-solid fa-chevron-up"></i>
+            </div>
+            <div class="panel-body">
+              <div class="form-row">
+                <div class="form-group half">
+                  <label>Default Altitude (m)</label>
+                  <div class="number-input">
+                    <input type="number" value="30">
+                    <div class="spinners"><i class="fa-solid fa-chevron-up"></i><i class="fa-solid fa-chevron-down"></i></div>
+                  </div>
+                </div>
+                <div class="form-group half">
+                  <label>Default Speed (m/s)</label>
+                  <div class="number-input">
+                    <input type="number" value="5">
+                    <div class="spinners"><i class="fa-solid fa-chevron-up"></i><i class="fa-solid fa-chevron-down"></i></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group half">
+                  <label>Mission Type</label>
+                  <select class="basic-select">
+                    <option>Survey</option>
+                  </select>
+                </div>
+                <div class="form-group half">
+                  <label>Finish Action</label>
+                  <select class="basic-select">
+                    <option>Return to Home</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row toggles-row mt-2">
+                <div class="toggle-group">
+                  <div class="toggle active"><div class="knob"></div></div>
+                  <span>Auto Calibrate Altitude</span>
+                </div>
+                <div class="toggle-group">
+                  <div class="toggle"><div class="knob"></div></div>
+                  <span>Terrain Follow</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div> <!-- closes right-panel -->
+      </div> <!-- closes workspace-row -->
+
+      <!-- Elevation Profile (full width up to the sidebar) -->
+      <div class="elevation-profile">
+        <div class="elevation-header">
+          <span><i class="fa-solid fa-chart-area"></i> Elevation Profile <i class="fa-solid fa-circle-info info-icon"></i></span>
+        </div>
+        <div class="elevation-content">
+          <div class="graph-area">
+            <!-- SVG representing the chart line -->
+            <svg width="100%" height="100%" viewBox="0 0 1000 100" preserveAspectRatio="none">
+              <path d="M 0,50 L 150,50 L 300,50 L 450,50 L 600,50 L 750,50 L 900,50 L 1000,50" fill="none" stroke="#2580F5" stroke-width="2"/>
+              <circle cx="150" cy="50" r="4" fill="#2580F5"/>
+              <circle cx="300" cy="50" r="4" fill="#2580F5"/>
+              <circle cx="450" cy="50" r="4" fill="#2580F5"/>
+              <circle cx="600" cy="50" r="4" fill="#2580F5"/>
+              <circle cx="750" cy="50" r="4" fill="#2580F5"/>
+              <circle cx="900" cy="50" r="4" fill="#2580F5"/>
+            </svg>
+            <div class="graph-y-axis">
+              <span>100 m</span>
+              <span>50 m</span>
+              <span>0 m</span>
+            </div>
+            <div class="graph-x-axis">
+              <span>0 km</span>
+              <span>0.5 km</span>
+              <span>1.0 km</span>
+              <span>1.5 km</span>
+              <span>2.0 km</span>
+              <span>2.5 km</span>
+              <span>3.0 km</span>
+              <span>3.4 km</span>
+            </div>
+          </div>
+          <div class="elevation-stats">
+            <div class="e-stat"><span>Min Altitude</span> <span>30 m</span></div>
+            <div class="e-stat"><span>Max Altitude</span> <span>30 m</span></div>
+            <div class="e-stat"><span>Total Ascent</span> <span>0 m</span></div>
+            <div class="e-stat"><span>Total Descent</span> <span>0 m</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div> <!-- closes workspace -->
+  </div> <!-- closes content -->
+</div> <!-- closes continer -->
+
+<script src="../js/mission-planner.js"></script>
+</body>
+</html>

@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Document</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="continer">
+  <header class="topnav">
+    <div class="info">
+      <div class="logo">
+        <img src="./images/logo.png" alt="AeroPlaner logo">
+      </div>
+      <div class="heading">
+        <h2>AeroPlaner</h2>
+        <p>Drone Mission Planner & Ground Control Station</p>
+      </div>
+    </div>
+
+    <div class="info2">
+      <div class="profile">
+        <i class="fa-solid fa-circle-user"></i>
+      </div>
+    </div>
+
+  </header>
+
+  <div class="content">
+      <aside class="aside">
+        <nav class="sidebar-nav">
+          <div class="nav-item active">
+            <div class="icon"><i class="fa-solid fa-house"></i></div>
+            <div class="text"><a href="#">Home</a></div>
+          </div>
+
+          <div class="nav-item">
+            <div class="icon"><i class="fa-solid fa-chart-line"></i></div>
+            <div class="text"><a href="#">Flight Data</a></div>
+          </div>
+
+          <div class="nav-item">
+            <div class="icon"><i class="fa-solid fa-map"></i></div>
+            <div class="text"><a href="pages/mission-planner.html">Mission Planner</a></div>
+          </div>
+
+          <div class="nav-item">
+            <div class="icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+            <div class="text"><a href="#">Vehicle Setup</a></div>
+          </div>
+
+          <div class="nav-item">
+            <div class="icon"><i class="fa-solid fa-sliders"></i></div>
+            <div class="text"><a href="#">Configuration</a></div>
+          </div>
+
+          <div class="nav-item">
+            <div class="icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div class="text"><a href="#">Geofence</a></div>
+          </div>
+
+          <div class="nav-item">
+            <div class="icon"><i class="fa-solid fa-diamond"></i></div>
+            <div class="text"><a href="#">Simulation</a></div>
+          </div>
+
+          <div class="nav-item">
+            <div class="icon"><i class="fa-regular fa-clipboard"></i></div>
+            <div class="text"><a href="#">Flight Logs</a></div>
+          </div>
+
+          <div class="nav-item">
+            <div class="icon"><i class="fa-solid fa-network-wired"></i></div>
+            <div class="text"><a href="#">MAVLink Inspector</a></div>
+          </div>
+
+          <div class="nav-item">
+            <div class="icon"><i class="fa-solid fa-microchip"></i></div>
+            <div class="text"><a href="#">Firmware</a></div>
+          </div>
+
+          <div class="nav-item">
+            <div class="icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+            <div class="text"><a href="#">Tools</a></div>
+          </div>
+
+          <div class="nav-item">
+            <div class="icon"><i class="fa-solid fa-gear"></i></div>
+            <div class="text"><a href="#">Settings</a></div>
+          </div>
+
+          <div class="nav-item">
+            <div class="icon"><i class="fa-regular fa-circle-question"></i></div>
+            <div class="text"><a href="#">Help</a></div>
+          </div>
+        </nav>
+      </aside>
+
+    <main class="main-content">
+        <div class="features">
+          <div class="feature1">
+            <div class="feature-heading">
+              <i class="fa-solid fa-helicopter"></i>
+              <span>Vehicle Status</span>
+            </div>
+
+            <div class="status">
+              <i class="fa-solid fa-wifi"></i>
+              <span class="label">Connection</span>
+              <span class="value">--</span>
+            </div>
+
+            <div class="status">
+              <i class="fa-solid fa-plane"></i>
+              <span class="label">Vehicle Type</span>
+              <span class="value">--</span>
+            </div>
+
+            <div class="status">
+              <i class="fa-solid fa-route"></i>
+              <span class="label">Flight Mode</span>
+              <span class="value">--</span>
+            </div>
+
+            <div class="status">
+              <i class="fa-solid fa-power-off"></i>
+              <span class="label">Armed</span>
+              <span class="value disconnected">--
+        </span>
+            </div>
+
+            <div class="status">
+              <i class="fa-solid fa-battery-half"></i>
+              <span class="label">Battery</span>
+              <span class="value">--</span>
+            </div>
+
+            <div class="status">
+              <i class="fa-solid fa-location-dot"></i>
+              <span class="label">GPS</span>
+              <span class="value">--</span>
+            </div>
+
+            <div class="status">
+              <i class="fa-solid fa-satellite"></i>
+              <span class="label">Satellites</span>
+              <span class="value">--</span>
+            </div>
+
+            <div class="status">
+              <i class="fa-solid fa-mountain-sun"></i>
+              <span class="label">Altitude (AMSL)</span>
+              <span class="value">--</span>
+            </div>
+
+            <div class="status">
+              <i class="fa-solid fa-gauge-high"></i>
+              <span class="label">Ground Speed</span>
+              <span class="value">--</span>
+            </div>
+
+            <div class="status">
+              <i class="fa-solid fa-compass"></i>
+              <span class="label">Heading</span>
+              <span class="value">--</span>
+            </div>
+
+            <div class="status">
+              <i class="fa-solid fa-fan"></i>
+              <span class="label">Current</span>
+              <span class="value">--</span>
+            </div>
+
+            <div class="status">
+              <i class="fa-solid fa-bolt"></i>
+              <span class="label">Voltage</span>
+              <span class="value">--</span>
+            </div>
+          </div>
+
+          <div class="feature2">
+              <div id="map"></div>
+          </div>
+
+          <div class="feature3">
+            <div class="feature-heading">Attitude Indicator</div>
+            <div class="indicator1">
+              <div class="lattitude-indicator">
+
+              </div>
+
+              <div class="altitude">
+                <div class="altitude-cont">
+                  <p>Altitude (m)</p>
+                  <h1>0.0</h1>
+                </div>
+                <div class="altitude-cont">
+                  <p>Ground Speed (m/s)</p>
+                  <h1>0.0</h1>
+                </div>
+                <div class="altitude-cont">
+                  <p>Heading (*)</p>
+                  <h1>0</h1>
+                </div>
+                <div class="altitude-cont">
+                  <p>Vertical Speed (m/s)</p>
+                  <h1>0.0</h1>
+                </div>
+              </div>
+            </div>
+            <div class="indicator2">
+              <div class="battery">
+                <div class="battery-head">Battery Status</div>
+                <div class="battery-percen">
+                  <span><i class="fa-solid fa-battery-full"></i> 100%</span><span>--V</span><span>--A</span>
+                </div>
+              </div>
+              <div class="gps">
+                  <div class="gps-heading">
+                    GPS Status
+                  </div>
+                <div class="gps-cont">
+                  <span><i class="fa-solid fa-location-crosshairs"></i></span><span>Status:0</span><span>HDOP:--</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <div class="footer">
+        <div class="mission-recent">
+          <div class="feature-heading">
+            <i class="fa-regular fa-rectangle-list"></i>
+            <span>Recent Missions</span>
+            <button class="view-all">View All</button>
+          </div>
+
+          <div class="mission-table">
+            <div class="mission-row mission-head">
+              <span>Name</span><span>Date Modified</span><span>Waypoints</span><span>Distance</span><span>Actions</span>
+            </div>
+
+            <div class="mission-row">
+              <span class="m-name"><i class="fa-regular fa-folder"></i>Survey_Mission</span>
+              <span>2024-08-20 14:32</span><span>12</span><span>2.4 km</span>
+              <span class="actions">
+          <i class="fa-regular fa-play"></i>
+          <i class="fa-regular fa-pen-to-square"></i>
+          <i class="fa-regular fa-trash-can delete"></i>
+        </span>
+            </div>
+
+            <div class="mission-row">
+              <span class="m-name"><i class="fa-regular fa-folder"></i>Inspection_Route</span>
+              <span>2024-08-18 09:15</span><span>8</span><span>1.6 km</span>
+              <span class="actions">
+          <i class="fa-regular fa-play"></i>
+          <i class="fa-regular fa-pen-to-square"></i>
+          <i class="fa-regular fa-trash-can delete"></i>
+        </span>
+            </div>
+
+            <div class="mission-row">
+              <span class="m-name"><i class="fa-regular fa-folder"></i>Test_Flight</span>
+              <span>2024-08-15 11:20</span><span>5</span><span>0.8 km</span>
+              <span class="actions">
+          <i class="fa-regular fa-play"></i>
+          <i class="fa-regular fa-pen-to-square"></i>
+          <i class="fa-regular fa-trash-can delete"></i>
+        </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="quick-tool">
+          <div class="feature-heading">
+            <i class="fa-solid fa-wrench"></i>
+            <span>Quick Tools</span>
+          </div>
+
+          <div class="tool-grid">
+            <button class="tool-btn"><i class="fa-solid fa-file-import"></i><span>Load Mission</span></button>
+            <button class="tool-btn"><i class="fa-regular fa-file-lines"></i><span>Save Mission</span></button>
+            <button class="tool-btn"><i class="fa-solid fa-sliders"></i><span>Parameter List</span></button>
+            <button class="tool-btn"><i class="fa-solid fa-gear"></i><span>Calibration</span></button>
+            <button class="tool-btn"><i class="fa-solid fa-upload"></i><span>Firmware Update</span></button>
+            <button class="tool-btn"><i class="fa-solid fa-download"></i><span>Log Download</span></button>
+            <button class="tool-btn"><i class="fa-solid fa-location-dot"></i><span>Geofence</span></button>
+            <button class="tool-btn"><i class="fa-solid fa-terminal"></i><span>MAVLink Console</span></button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="./map.js"></script>
+</body>
+</html>
